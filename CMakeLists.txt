@@ -47,17 +47,17 @@
     # files we want to compile
     include(ValaPrecompile)
     vala_precompile(VALA_C ${EXEC_NAME}
-        src/main.vala
-        src/application.vala
-        src/sidebar.vala
-        src/window.vala
-        src/ContactDetails.vala
-        src/ContactsItem.vala
-        src/ContactsList.vala
-        src/CustomHeaderBar.vala
-        src/ContactEdit.vala
-        src/ContactViewer.vala
-        src/ContactsViewRows.vala
+        src/widget/main.vala
+        src/widget/application.vala
+        src/widget/sidebar.vala
+        src/widget/window.vala
+        src/widget/ContactDetails.vala
+        src/widget/ContactsItem.vala
+        src/widget/ContactsList.vala
+        src/widget/CustomHeaderBar.vala
+        src/widget/ContactDetailsEdit.vala
+        src/widget/ContactViewer.vala
+        src/widget/ContactsViewRows.vala
 
 
     # tell what libraries to use when compiling

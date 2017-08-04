@@ -23,7 +23,7 @@
 public class Contacts.ContactViewer : Gtk.Overlay{
 
     private Contacts.ContactDetails Details;
-    private Contacts.ContactEdit ContactEdit;
+    private Contacts.ContactDetailsEdit ContactDetailsEdit;
     private Contacts.ContactsViewRows ViewRows;
     private Gtk.Stack stack;
 
@@ -35,14 +35,14 @@ public class Contacts.ContactViewer : Gtk.Overlay{
 
     private void build_ui(){
         Details = new Contacts.ContactDetails ();
-        ContactEdit = new Contacts.ContactEdit ();
+        ContactDetailsEdit = new Contacts.ContactDetailsEdit ();
         ViewRows = new Contacts.ContactsViewRows();
         hexpand = true;
         vexpand = true;
 
         stack = new Gtk.Stack ();
         stack.add_named (Details, "Details");
-        stack.add_named (ContactEdit, "ContactEdit");
+        stack.add_named (ContactDetailsEdit, "ContactDetailsEdit");
         stack.add_named (ViewRows, "ViewRows");
         stack.set_transition_type (Gtk.StackTransitionType.SLIDE_LEFT_RIGHT);
 

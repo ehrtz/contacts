@@ -48,6 +48,7 @@ public class Contacts.ContactDetails : Gtk.Box{
         fullname.margin_start = 15;
         fullname.margin_end = 15;
         layout_grid.attach ( fullname, 0,1,2,1);
+
         var job = new Gtk.Label ( "Hokage" );
         fullname.get_style_context ().add_class ("h5");
         layout_grid.attach ( job, 0,2,2,1);
@@ -61,6 +62,7 @@ public class Contacts.ContactDetails : Gtk.Box{
         label.get_style_context ().add_class (Gtk.STYLE_CLASS_DIM_LABEL);
         label.get_style_context ().add_class ("h3");
         layout_grid.attach ( label, 0,4,1,1);
+
         var details = new Gtk.Label ( "0919-1234567" );
         details.halign = Gtk.Align.START;
         details.get_style_context ().add_class ("h3");
@@ -71,10 +73,12 @@ public class Contacts.ContactDetails : Gtk.Box{
         label.get_style_context ().add_class (Gtk.STYLE_CLASS_DIM_LABEL);
         label.get_style_context ().add_class ("h3");
         layout_grid.attach ( label, 0,5,1,1);
+
         details = new Gtk.Label ( "02-1234567" );
         details.halign = Gtk.Align.START;
         details.get_style_context ().add_class ("h3");
         layout_grid.attach ( details, 1,5,1,1);
+
         pack_start(layout_grid,true, true, 0);
         show_all ();
 

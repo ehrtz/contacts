@@ -20,11 +20,11 @@
 */
 
 
-public class Contacts.ContactEdit : Gtk.Box{
+public class Contacts.ContactDetailsEdit : Gtk.Box{
     private Gtk.Grid avatar_grid;
     private Granite.Widgets.Avatar avatar;
 
-    public ContactEdit (){
+    public ContactDetailsEdit (){
         build_ui ();
 
         show_all ();
