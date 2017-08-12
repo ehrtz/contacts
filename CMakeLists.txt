@@ -15,10 +15,11 @@
     # what to call that directory where we install data too
     set (PKGDATADIR "${DATADIR}/com.github.ehrtz.contacts")
 
-    set (EXEC_NAME "com.github.ehrtz.contacts")
+    set (EXEC_NAME ${CMAKE_PROJECT_NAME})
     set (RELEASE_NAME "A hello world.")
     set (VERSION "0.1")
     set (VERSION_INFO "whats up world")
+    set (APP_NAME "Contactz")
 
     # we're about to use pkgconfig to make sure dependencies are installed so let's find pkgconfig first
     find_package(PkgConfig)
@@ -58,6 +59,8 @@
         src/widget/ContactDetailsEdit.vala
         src/widget/ContactViewer.vala
         src/widget/ContactsViewRows.vala
+        src/widget/DetailsEntry.vala
+        src/Services/ContactEnum.vala
 
 
     # tell what libraries to use when compiling

@@ -52,11 +52,14 @@ public class Contacts.ContactViewer : Gtk.Overlay{
 
 
     public void set_view(string widget_name){
-        if ( widget_name == "Details" ){
+        if ( widget_name == "Details" ) {
             stack.set_visible_child_name ("Details");
         }
-        else{
+        else if ( widget_name == "ViewRows" ) {
             stack.set_visible_child_name ("ViewRows");
+        }
+        else if ( widget_name == "ContactDetailsEdit" ) {
+            stack.set_visible_child_name ("ContactDetailsEdit");
         }
     }
 }

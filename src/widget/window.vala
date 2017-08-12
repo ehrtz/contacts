@@ -51,6 +51,13 @@ public class Contacts.Window : Gtk.ApplicationWindow {
         .avatar {
             border-radius: 10%;
         }
+        .no-border {
+            border-top-style: none;
+            border-left-style: none;
+            border-right-style: none;
+            border-bottom-style: none;
+            background-image: none;
+        }
         .header {
             background-color: shade (@base_color, 0.96);
             font-weight: bold;
@@ -106,12 +113,14 @@ public class Contacts.Window : Gtk.ApplicationWindow {
         ContactsPane.pack1(ContactsList, false, false);
         ContactsPane.pack2(Viewer, true, false);
 
+        Viewer.set_view("ContactDetailsEdit");
+
         ContactsList.rows_selected.connect ( ( rows ) => {
 
             if (rows.length () < 2)
                 Viewer.set_view("Details");
             else
-                Viewer.set_view("ContactEdit");
+                Viewer.set_view("ContactDetailsEdit");
 
         });
 

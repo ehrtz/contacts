@@ -23,6 +23,9 @@
 public class Contacts.ContactDetailsEdit : Gtk.Box{
     private Gtk.Grid avatar_grid;
     private Granite.Widgets.Avatar avatar;
+    private Gtk.ListBox listbox;
+    private Contacts.DetailsEntry entry;
+
 
     public ContactDetailsEdit (){
         build_ui ();
@@ -31,22 +34,40 @@ public class Contacts.ContactDetailsEdit : Gtk.Box{
     }
 
     private void build_ui (){
-
-
-
+        orientation = Gtk.Orientation.VERTICAL;
+        set_homogeneous ( false );
+        listbox = new Gtk.ListBox ();
+        listbox.vexpand = true;
+        listbox.hexpand = true;
+        listbox.valign = Gtk.Align.START;
+        listbox.set_selection_mode (Gtk.SelectionMode.NONE);
         avatar_grid = new Gtk.Grid();
-        pack_start(avatar_grid,true, true, 0);
+        //pack_start(avatar_grid,true, true, 0);
 
         avatar_grid = new Gtk.Grid();
         avatar_grid.column_spacing = 15;
-        avatar_grid.row_spacing = 8;
+        avatar_grid.row_spacing = 15;
 
         avatar = new Granite.Widgets.Avatar.with_default_icon (72);
 
         avatar.hexpand = true;
         avatar.halign = Gtk.Align.CENTER;
         avatar_grid.attach (avatar, 0, 0, 1, 1);
-        pack_start(avatar_grid,true, true, 0);
+        var separator = new Gtk.Separator (Gtk.Orientation.HORIZONTAL);
+        avatar_grid.attach ( separator, 0,1,1,1);
+
+        entry = new Contacts.DetailsEntry ( Contacts.EntryType.PHONE );
+        listbox.add ( entry );
+
+
+
+
+        pack_start(avatar_grid,false, false, 0);
+        pack_start(listbox,false, false, 0);
+
+
+
+
         show_all ();
 
     }
