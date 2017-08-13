@@ -35,6 +35,8 @@ public class Contacts.CustomHeaderBar : Gtk.Paned{
 
         var search_entry = new Gtk.SearchEntry ();
         search_entry.margin = 3;
+        search_entry.margin_top = 8;
+        search_entry.margin_bottom = 8;
         search_entry.set_size_request(244, 0);
         search_entry.width_chars = 30;
         search_entry.placeholder_text = ("Search\u2026");
@@ -53,6 +55,7 @@ public class Contacts.CustomHeaderBar : Gtk.Paned{
 		set_window_buttons();
         this.pack1(left_header, true, false);
 		this.pack2(right_header, true, false);
+
 
         this.get_style_context().add_class("headerbar_pane");
 

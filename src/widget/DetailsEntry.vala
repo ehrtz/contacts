@@ -28,10 +28,9 @@ public class Contacts.DetailsEntry : Gtk.ListBoxRow {
     private Gtk.ComboBoxText entry_label;
     private Gtk.Entry entry_value;
     private Gtk.Grid row_grid;
-    private Gtk.ListStore list_store;
 
     private static string[] used_label={};
-
+    private int index;
      const string phone_type[7] = {
         "home",
         "work",
@@ -44,17 +43,17 @@ public class Contacts.DetailsEntry : Gtk.ListBoxRow {
       };
 
 
-    public DetailsEntry ( Contacts.EntryType Entry ) {
-        entry_type = Entry;
+    public DetailsEntry ( Contacts.EntryType EntryType ) {
+        entry_type = EntryType;
         build_ui ();
         show_all ();
 
     }
 
     private void build_ui () {
-        margin = 3;
+
         hexpand = true;
-        create_list ();
+
         if ( entry_type == Contacts.EntryType.PHONE ) {
             create_entry_phone ();
         }
@@ -65,51 +64,49 @@ public class Contacts.DetailsEntry : Gtk.ListBoxRow {
         this.show_all ();
     }
 
-    private void create_list (){
-        list_store = new Gtk.ListStore (1, typeof (string) );
-        Gtk.TreeIter iter;
-
-        list_store.append (out iter);
-        list_store.set (iter, 0, "Home");
-        list_store.append (out iter);
-        list_store.set (iter, 0, "Personal");
-        list_store.append (out iter);
-        list_store.set (iter, 0, "Work");
-
-
-
-    }
 
     private void create_entry_phone (){
+        int i;
+
         row_grid = new Gtk.Grid ();
         row_grid.column_spacing = 3;
         row_grid.margin_start = 15;
         row_grid.margin_end = 15;
 
         entry_label = new Gtk.ComboBoxText ();
-        entry_label.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
-        //entry_label.get_style_context ().remove_class ("entry");
-        entry_label.append_text ("home");
-		entry_label.append_text ("work");
-		entry_label.append_text ("mobile");
-		entry_label.append_text ("main");
-		entry_label.append_text ("home fax");
-		entry_label.append_text ("work fax");
-		entry_label.append_text ("pager fax");
-		entry_label.append_text ("other");
+        //entry_label.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+        entry_label.get_style_context ().remove_class ("entry");
+        for ( i=0; i<=phone_type.length; i++) {
+            entry_label.append_text (phone_type[i]);
+        }
 
-        //for (int i=0; i= G_N_ELEMENTS (phone_type); i++) {
-        //}
 
-        entry_label.active = 0;
+        if (used_label[0] == null ) {
+
+            index = 2;
+        }
+        else {
+
+            for ( i=0; i<=phone_type.length; i++) {
+                index = i;
+                bool is_used = next_label (phone_type[i]);
+                if (!is_used){
+
+                    break;
+                }
+            }
+        }
+
+        entry_label.active = index;
+        used_label += phone_type[index];
 
         row_grid.attach ( entry_label, 0, 0, 1, 1 );
 
         var separator = new Gtk.Separator (Gtk.Orientation.VERTICAL);
         row_grid.attach ( separator, 1, 0, 1, 1 );
         entry_value = new Gtk.Entry ();
-        entry_value.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
-        //entry_value.get_style_context ().remove_class ("entry");
+        //entry_value.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+        entry_value.get_style_context ().remove_class ("entry");
         entry_value.placeholder_text = ("Add phone");
 
 
@@ -138,6 +135,14 @@ public class Contacts.DetailsEntry : Gtk.ListBoxRow {
         add ( row_grid );
         //entry_label =
 
+    }
+
+    private bool next_label (string next_label){
+        for (int i=0; i<used_label.length; i++) {
+            if (next_label == used_label[i])
+               return true;
+        }
+        return false;
     }
 
 }

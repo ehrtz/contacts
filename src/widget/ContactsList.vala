@@ -78,7 +78,7 @@ public class Contacts.ContactsList : Gtk.ScrolledWindow{
         var header_label = new Gtk.Label("");
         header_label.halign = Gtk.Align.START;
         header_label.margin = 2;
-        header_label.margin_start = 6;
+        header_label.margin_start = 10;
         header_label.get_style_context ().add_class (Gtk.STYLE_CLASS_DIM_LABEL);
 
         var header_grid = new Gtk.Box ( Gtk.Orientation.VERTICAL, 0 );

@@ -39,7 +39,8 @@ public class Contacts.ContactsItem : Gtk.ListBoxRow{
     private void build_ui () {
         Gtk.Grid m_layout;
         Gtk.Grid m_grid;
-
+        margin_start = 6;
+        margin_end = 6;
         avatar = new Granite.Widgets.Avatar.with_default_icon (32);
         avatar.halign = Gtk.Align.START;
 
@@ -58,7 +59,7 @@ public class Contacts.ContactsItem : Gtk.ListBoxRow{
         this.add ( m_grid );
 
 
-        m_layout.margin = 3;
+        //m_layout.margin = 3;
         m_layout.attach ( avatar, 0,0, 1, 2 );
         m_layout.attach ( name_label, 1,0, 1, 1 );
         m_layout.attach ( details_label, 1,1, 1, 1 );
