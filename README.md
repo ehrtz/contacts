@@ -1,5 +1,5 @@
 # Contacts
-Contacts
+
 An apps that has no features yet
 
 # How to build
